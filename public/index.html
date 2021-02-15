@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Express example</title>
+    <style>
+      button::after {
+        content: attr(data-number);
+      }
+    </style>
+  </head>
+  <body>
+    Hello, World!
+    <input />
+    <button>login</button>
+    <script>
+      const input = document.querySelector('input');
+      const button = document.querySelector('button')
+
+      button.addEventListener('click', async () => {
+      	console.log(await fetch('/login', {
+      			method: 'POST',
+						mode: 'cors',
+						credentials: 'same-origin',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							password: input.value
+						})
+      	}));
+      })
+      // for (let i = 0; i < 10; i++) {
+      // 	const button = document.createElement('button');
+
+      // 	button.dataset.number = i
+
+      // 	button.addEventListener('click', async (event) => {
+      // 		// console.log(event.target.dataset.number);
+      // 		console.log(await fetch('/api/proxy', {
+      // 			method: 'GET',
+      // 		}));
+      // 	})
+
+      // 	document.body.appendChild(button);
+      // }
+    </script>
+  </body>
+</html>
